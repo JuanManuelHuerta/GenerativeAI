@@ -3,7 +3,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 
-model_name = "EleutherAI/gpt-neox-20b"
+#model_name = "EleutherAI/gpt-neox-20b"
+model_name = "EleutherAI/gpt-neo-1.3B"
 
 #Tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -29,7 +30,7 @@ model = prepare_model_for_kbit_training(model)
 config = LoraConfig(
     r=8, 
     lora_alpha=32, 
-    target_modules=["query_key_value"], 
+    #target_modules=["query_key_value"], 
     lora_dropout=0.05, 
     bias="none", 
     task_type="CAUSAL_LM"
